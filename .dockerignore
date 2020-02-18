@@ -1,0 +1,15 @@
+.dockerignore
+.env
+.git
+.gitignore
+.vs
+.vscode
+.idea
+README.md
+.gitlab-ci.yml
+tests
+*/*.Tests
+*/bin
+*/obj
+**/.toolstarget
+*/.DotSettings.*

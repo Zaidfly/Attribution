@@ -1,0 +1,11 @@
+{
+	"AttributionDb": "Host=ghost.local.com;Database=Attribution;Username=y;Password=y",
+	"Exceptional": "Data Source=ghost.local.com;Initial Catalog=YouDoLogsExceptions;User ID=y;Password=y;Timeout=60;",
+	"Redis": "ghost.local.com:6379,syncTimeout=5000,connectTimeout=10000,allowAdmin=true,abortConnect=false",
+	
+	"RabbitMq": {
+		"Url": "amqp://y:y@ghost.local.com",
+		"ConnectionTimeout": 10,
+		"RecoveryInterval": 3		
+	}	
+}

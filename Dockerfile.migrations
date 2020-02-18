@@ -1,0 +1,15 @@
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
+WORKDIR /src
+
+# Copy source files and build project
+COPY . ./
+RUN dotnet publish ./migrations/Migrations.Attribution/Migrations.Attribution.csproj -c Release -o /app
+COPY ./**/run-migrations.sh /app
+
+# Build runtime image
+FROM mcr.microsoft.com/dotnet/core/runtime:2.2
+WORKDIR /app
+COPY --from=build /app .
+RUN chmod +x run-migrations.sh
+
+ENTRYPOINT ["/app/run-migrations.sh"]

@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>    
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Attribution.Configuration\Attribution.Configuration.csproj" />
+    <ProjectReference Include="..\Attribution.Domain\Attribution.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="linq2db.PostgreSQL" Version="2.9.0" />
+    <PackageReference Include="YouDo.Caching" Version="2.2.4" />
+  </ItemGroup>
+
+</Project>

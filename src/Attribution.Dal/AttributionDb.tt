@@ -1,0 +1,29 @@
+<#@ template language="C#" debug="True" hostSpecific="True"                           #>
+<#@ output extension=".generated.cs"                                                  #>
+<#@ include file="$(LinqToDBT4PostgreSQLTemplatesDirectory)LinqToDB.PostgreSQL.Tools.ttinclude" #>
+<#@ include file="$(LinqToDBT4PostgreSQLTemplatesDirectory)PluralizationService.ttinclude"      #>
+<#
+    DataContextName = "AttributionDb";
+	NamespaceName = "Attribution.Dal";	
+	SchemaNameSuffix = "Db";
+
+    GenerateConstructors = false;
+    GenerateFindExtensions = false;
+
+    GetSchemaOptions.IncludedSchemas = new[] {"public"};
+    
+    LoadPostgreSQLMetadata("ghost.local.com", "5432", "Attribution", "youdo", "youdo");
+
+    Tables.Remove("VersionInfo");
+
+    Tables["user_actions"].TypeName = "UserActionDb";
+    Tables["url_referrers"].TypeName = "UrlReferrerDb";
+	Tables["channels"].TypeName = "ChannelDb";
+	Tables["channel_attributes"].TypeName = "ChannelAttributesDb";
+	Tables["action_types"].TypeName = "ActionTypeDb";
+        
+    GenerateAssociations = false;
+    
+    GenerateModel();
+
+#>

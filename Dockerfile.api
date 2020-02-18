@@ -1,0 +1,12 @@
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
+WORKDIR /src
+
+# Copy source files and build project
+COPY . ./
+RUN dotnet publish ./src/Attribution.Api/Attribution.Api.csproj -c Release -o /app
+
+# Build runtime image
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2
+WORKDIR /app
+COPY --from=build /app .
+ENTRYPOINT ["dotnet", "Attribution.Api.dll"]
